@@ -15,7 +15,7 @@ const port = process.env.PORT || 4000;
 app.use(compression());
 app.use(bodParser.json());
 app.use(bodParser.urlencoded({ extended: true }));
-// app.use(enforce.HTTPS({trustProtoHeader: true}));
+app.use(enforce.HTTPS({trustProtoHeader: true}));
 app.use(cors());
 
 app.listen(port, (error) => {
@@ -23,16 +23,15 @@ app.listen(port, (error) => {
   console.log(`server running on port :${port}`);
 });
 
+// Create GET request
+app.get("/", (req, res) => {
+  res.send("Express on Vercel");
+});
+
 // use for PWA to get the service-worker file inside build
 app.get("/service-worker.js", (req, res) => {
   res.sendFile(path.resolve(__dirname, "..", "build", "service-worker.js"));
 });
-
-app.get("/", (req, res) => {
-  res.send({
-    messgage: 'server'
-  })
-})
 
 app.post("/payment", (req, res) => {
     const body = {
