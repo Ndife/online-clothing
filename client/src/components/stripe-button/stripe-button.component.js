@@ -9,7 +9,7 @@ const StripeCheckoutButton = ({ price }) => {
 
   const onToken = (token) => {
     axios({
-      url: "payment",
+      url: "https://online-clothing-b5tv9uyql-ndife.vercel.app/",
       method: "POST",
       data: {
         amount: priceForStripe,
