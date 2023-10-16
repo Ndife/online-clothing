@@ -18,3 +18,7 @@ export const ButtonsBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const SignInSection = styled.div`
+margin-top: 20px;
+`;

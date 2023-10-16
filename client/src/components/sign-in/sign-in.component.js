@@ -13,7 +13,9 @@ import {
   SignInContainer,
   SignInTitle,
   ButtonsBarContainer,
+  SignInSection,
 } from "./sign-in.styles";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   const [userCredentials, setUserCredentials] = useState({
@@ -69,6 +71,9 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
             Sign in with Google{" "}
           </CustomButton>
         </ButtonsBarContainer>
+        <SignInSection>
+          <span>Already a member? <Link to="/signup">Sign up</Link></span>
+        </SignInSection>
       </form>
     </SignInContainer>
   );

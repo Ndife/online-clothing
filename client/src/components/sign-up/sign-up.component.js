@@ -4,10 +4,15 @@ import { connect } from "react-redux";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
-import { SignUpContainer, SignUpTitle } from "./sign-up.styles";
+import { SignUpContainer, SignUpTitle, SignUpSection } from "./sign-up.styles";
 import { signUpStart } from "../../redux/user/user.actions";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-const SignUp = ({ signUpStart }) => {
+import {
+  googleSignInStart,
+} from "../../redux/user/user.actions";
+
+const SignUp = ({ signUpStart, googleSignInStart }) => {
   const [userCredentials, setUserCredentials] = useState({
     displayName: "",
     email: "",
@@ -72,13 +77,25 @@ const SignUp = ({ signUpStart }) => {
           handleChange={handleChange}
           required
         />
+        <CustomButton
+          type="button"
+          onClick={googleSignInStart}
+          isGoogleSignIn
+        >
+          Sign up with Google{" "}
+        </CustomButton>
         <CustomButton type="submit">Sign Up</CustomButton>
+        <SignUpSection>
+          <span>Already a member? <Link to="/signin">Sign in</Link></span>
+        </SignUpSection>
       </form>
     </SignUpContainer>
   );
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  googleSignInStart: () => dispatch(googleSignInStart()),
   signUpStart: (userCredentials) => dispatch(signUpStart(userCredentials)),
 });
 export default connect(null, mapDispatchToProps)(SignUp);
+
