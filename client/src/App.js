@@ -11,13 +11,15 @@ import ErrorBoundary from "./components/error-boundary/error-boundary.component"
 
 import { selectCurrentUser } from "./redux/user/user.selector";
 import { checkUserSession } from "./redux/user/user.actions";
+import Contact from "./pages/contact/contact.component";
 
 
 const Homepage = lazy(() => import("./pages/homepage/homepage.component"));
 const ShopPage = lazy(() => import("./pages/shop/shop.component"));
 const CheckoutPage = lazy(() => import("./pages/checkout/checkout.component"));
-const SignInAndSignUpPage = lazy(() =>
-  import("./pages/sign-in-and-sign-up-page/sign-in-and-sign-up-page")
+const SignUpPage = lazy(() => import("./pages/sign-in-and-sign-up-page/sign-up-page"));
+const SignInPage = lazy(() =>
+  import("./pages/sign-in-and-sign-up-page/sign-in-page")
 );
 
 const App = ({ checkUserSession, currentUser }) => {
@@ -35,11 +37,19 @@ const App = ({ checkUserSession, currentUser }) => {
             <Route exact path="/" component={Homepage} />
             <Route path="/shop" component={ShopPage} />
             <Route exact path="/checkout" component={CheckoutPage} />
+            <Route exact path="/contact" component={Contact} />
+            <Route
+              exact
+              path="/signup"
+              render={() =>
+                currentUser ? <Redirect to="/" /> : <SignUpPage />
+              }
+            />
             <Route
               exact
               path="/signin"
               render={() =>
-                currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
+                currentUser ? <Redirect to="/" /> : <SignInPage />
               }
             />
           </Suspense>
