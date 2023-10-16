@@ -14,3 +14,8 @@ export const SignUpTitle = styled.h2`
 export const SignUpSection = styled.div`
   margin-top: 20px;
 `;
+
+export const ButtonsBarContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;

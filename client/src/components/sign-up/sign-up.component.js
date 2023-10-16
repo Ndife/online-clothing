@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
-import { SignUpContainer, SignUpTitle, SignUpSection } from "./sign-up.styles";
+import { SignUpContainer, SignUpTitle, SignUpSection, ButtonsBarContainer } from "./sign-up.styles";
 import { signUpStart } from "../../redux/user/user.actions";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -77,14 +77,16 @@ const SignUp = ({ signUpStart, googleSignInStart }) => {
           handleChange={handleChange}
           required
         />
-        <CustomButton
-          type="button"
-          onClick={googleSignInStart}
-          isGoogleSignIn
-        >
-          Sign up with Google{" "}
-        </CustomButton>
-        <CustomButton type="submit">Sign Up</CustomButton>
+        <ButtonsBarContainer>
+          <CustomButton type="submit">Sign Up</CustomButton>
+          <CustomButton
+            type="button"
+            onClick={googleSignInStart}
+            isGoogleSignIn
+          >
+            Sign up with Google{" "}
+          </CustomButton>
+        </ButtonsBarContainer>
         <SignUpSection>
           <span>Already a member? <Link to="/signin">Sign in</Link></span>
         </SignUpSection>
