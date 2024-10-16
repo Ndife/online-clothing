@@ -62,12 +62,14 @@ export const OptionLink = styled(Link)`
   cursor: pointer;
   transition: background-color 0.3s ease;
 
-  &:hover {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(211, 211, 211, 0.5); /* LightGray with 50% transparency */
+   @media screen and (max-width: 800px) {
+    &:hover {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(211, 211, 211, 0.5); /* LightGray with 50% transparency */
+    }
   }
 `;
 
